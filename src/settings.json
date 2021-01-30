@@ -1,0 +1,12 @@
+{
+  "colors": {
+    "white": "#fff",
+    "off_white": "#F0EAD2",
+    "light_primary": "#DDE5B6",
+    "primary": "#ADC178",
+    "secondary": "#A98467",
+    "dark_secondary": "#6C584C",
+    "black": "#000"
+  },
+  "navbar_height": 82
+}
