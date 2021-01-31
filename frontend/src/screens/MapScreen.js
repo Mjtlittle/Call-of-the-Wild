@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect, useRef } from "react";
-import AsyncStorage from "@react-native-async-storage/async-storage";
-import { StyleSheet, Text, View, Dimensions } from "react-native";
+import React, { useContext, useState, useEffect, useRef } from 'react';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { StyleSheet, Text, View, Dimensions } from 'react-native';
 
-import { LocationContext } from "../contexts/LocationContext";
-import settings from "../settings.json";
+import { LocationContext } from '../contexts/LocationContext';
+import settings from '../settings.json';
 
-import Navbar from "../components/Navbar";
-import Map from "../components/Map";
-import RandomButton from "../components/RandomButton";
-import RecenterButton from "../components/RecenterButton";
+import Navbar from '../components/Navbar';
+import Map from '../components/Map';
+import RandomButton from '../components/RandomButton';
+import RecenterButton from '../components/RecenterButton';
 
 const MapScreen = () => {
   const context = useContext(LocationContext);
@@ -23,7 +23,7 @@ const MapScreen = () => {
     (async () => {
       // retrieve the stored target
       const stored_target_string = await AsyncStorage.getItem(
-        settings.keys.target_location
+        settings.keys.target_location,
       );
       const stored_target = JSON.parse(stored_target_string);
 
@@ -37,7 +37,7 @@ const MapScreen = () => {
     _setTargetData(data);
     AsyncStorage.setItem(
       settings.keys.target_location,
-      JSON.stringify(data)
+      JSON.stringify(data),
     ).catch(() => {});
   };
 
@@ -45,12 +45,12 @@ const MapScreen = () => {
   //useEffect(() => {}, [context.location]);
 
   const setRandomLocation = async () => {
-    console.log("started");
-    const response = await fetch("http://130.127.78.14:8080/", {
-      method: "POST",
+    console.log('started');
+    const response = await fetch('http://130.127.78.14:8080/', {
+      method: 'POST',
       headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
       },
       body: JSON.stringify({
         location: context.getCoords(),
@@ -75,7 +75,7 @@ const MapScreen = () => {
 
         zoom: 18,
       },
-      1
+      1,
     );
   };
 
@@ -106,18 +106,18 @@ export default MapScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: "column",
+    flexDirection: 'column',
   },
   overlay: {
-    position: "absolute",
+    position: 'absolute',
     bottom: 120,
     left: 0,
-    width: Dimensions.get("window").width,
+    width: Dimensions.get('window').width,
 
-    justifyContent: "space-between",
+    justifyContent: 'space-between',
 
     paddingHorizontal: 20,
     flex: 1,
-    flexDirection: "row",
+    flexDirection: 'row',
   },
 });

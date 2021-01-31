@@ -3,13 +3,13 @@ import { StyleSheet, Text, View, Dimensions } from 'react-native';
 import settings from '../settings.json';
 import { Foundation } from '@expo/vector-icons';
 
-const Tree = () => {
+const Tree = (props) => {
   return (
-    <View style={styles.tree}>
+    <View>
       <Foundation
         title="trees"
         name="trees"
-        color="#6C584C"
+        color={props.color}
         size={180}
       ></Foundation>
     </View>
@@ -17,11 +17,3 @@ const Tree = () => {
 };
 
 export default Tree;
-
-const styles = StyleSheet.create({
-  tree: {
-    position: 'absolute',
-    marginTop: 225,
-    left: 225,
-  },
-});
