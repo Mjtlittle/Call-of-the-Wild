@@ -1,30 +1,34 @@
 import React, { useState } from "react";
 import { StyleSheet, Text, View, Button, Pressable } from "react-native";
 import settings from "../settings.json";
-import { FontAwesome5 } from "@expo/vector-icons";
-const RandomButton = ({ onPress }) => {
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+
+const RecenterButton = ({ onPress, visible }) => {
   return (
     <Pressable onPress={onPress}>
-      <View style={styles.root}>
-        <FontAwesome5 name="dice" size={30} color={settings.colors.off_white} />
+      <View style={styles.root} opacity={visible ? 1 : 0}>
+        <MaterialCommunityIcons
+          name="target-account"
+          size={35}
+          color={settings.colors.off_white}
+        />
       </View>
     </Pressable>
   );
 };
 
-export default RandomButton;
+RecenterButton.defaultProps = {
+  visible: true,
+};
+
+export default RecenterButton;
 
 const styles = StyleSheet.create({
   root: {
     // appearence
-    backgroundColor: settings.colors.dark_secondary,
+    backgroundColor: settings.colors.blue,
     width: 67,
     height: 67,
-
-    // // position
-    // position: "absolute",
-    // bottom: 30,
-    // right: 20,
 
     // shadow
     borderRadius: 75,
