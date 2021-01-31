@@ -11,6 +11,12 @@ import { LocationProvider } from "./src/contexts/LocationContext";
 
 const Stack = createStackNavigator();
 
+const forFade = ({ current }) => ({
+  cardStyle: {
+    opacity: current.progress,
+  },
+});
+
 export default function App() {
   return (
     <LocationProvider>
@@ -20,7 +26,8 @@ export default function App() {
           <Stack.Navigator
             screenOptions={{
               headerShown: false,
-              animationEnabled: false,
+              //animationEnabled: false,
+              cardStyleInterpolator: forFade,
             }}
           >
             <Stack.Screen name="MapScreen" component={MapScreen} />
