@@ -13,6 +13,6 @@ const styles = StyleSheet.create({
     width: 250,
     height: 250,
     borderRadius: 250 / 2,
-    backgroundColor: '#FCE595',
+    backgroundColor: settings.colors.yellow,
   },
 });

@@ -1,5 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import { StyleSheet, Text, View, Dimensions, Button } from 'react-native';
+import {
+  StyleSheet,
+  Text,
+  View,
+  Dimensions,
+  Button,
+  Pressable,
+} from 'react-native';
 import Map from '../components/Map';
 import Navbar from '../components/Navbar';
 import settings from '../settings.json';
@@ -7,6 +14,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 import Sun from '../components/Sun';
 import Hill from '../components/Hill';
 import Trees from '../components/Trees';
+import Fire from '../components/Fire';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { format, compareAsc } from 'date-fns';
 import { endOfToday } from 'date-fns/esm';
@@ -15,21 +23,21 @@ import { endOfToday } from 'date-fns/esm';
 const STORAGE_KEY = '@save_streak';
 
 // track streak
-// ---- 1) get today's date
-const today = endOfToday();
-// ---- 2) get last login date and record this login as the new lastLogin
+// -- get today's date
+// -- get last login date and record this login as the new lastLogin
 // todo: get from local storage
 // const lastLogin = endOfToday();
 const StreakScreen = () => {
   const [streak, setStreak] = useState(0);
+  const [msg, setMsg] = useState(
+    "You don't have a streak yet. Get started today!",
+  );
 
   const saveData = async () => {
     try {
       setStreak(streak + 1);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(streak + 1));
-      // alert('Data successfully saved');
     } catch (e) {
-      // alert('Failed to save the data to the storage', e);
       console.log('Failed to save the data to the storage');
     }
   };
@@ -40,17 +48,20 @@ const StreakScreen = () => {
         setStreak(JSON.parse(userStreak));
       }
     } catch (e) {
-      alert('Failed to fetch the data from storage');
+      console.log('Failed to fetch the data from storage');
     }
   };
 
-  // ---- 3) if last login was before yesterday, set streak to 0
-  // ---- 4) if last login was yesterday, streak++
-  // ---- 5) if last login date was today (aka 'else'), do nothing
-  const today = endOfToday();
+  // if last login was before yesterday, set streak to 0
+  // if last login was yesterday, streak++
+  // if last login date was today (aka 'else'), do nothing
+  // const today = endOfToday();
+  // console.log(today);
 
-  // console.log('today', today);
-  // console.log(compareDates(date, ['1', '30', '2021'])); // proof that comparedates works
+  useEffect(() => {
+    streak > 0 &&
+      setMsg(`You're on a ${streak}-day streak!\n Congrats, keep on going!`);
+  }, [streak]);
 
   return (
     <View style={styles.container}>
@@ -58,28 +69,34 @@ const StreakScreen = () => {
         colors={[settings.colors.white, settings.colors.off_white]}
         style={styles.linearGradient}
       />
+
       <View style={styles.sun} pointerEvents="none">
         <Sun />
       </View>
-      <Button title="read streak" color="#f194ff" onPress={() => readData()}>
-        read streak
-      </Button>
-      <Button
-        title="increment streak"
-        color="#f194ff"
-        onPress={() => saveData()}
-      >
-        increment streak
-      </Button>
+
       <View style={styles.hill} pointerEvents="none">
         <Hill />
       </View>
-      <View pointerEvents="none">
-        <Trees />
+
+      <View style={styles.tree} pointerEvents="none">
+        <Trees color={settings.colors.dark_secondary} />
       </View>
-      <Text style={styles.streak_text}>Your Streak is {streak}</Text>
+
+      <Pressable style={styles.fire} onPress={() => saveData()}>
+        <Fire />
+        <Text style={styles.counter}>{streak}</Text>
+        <Text style={styles.msg}>{msg}</Text>
+      </Pressable>
+
+      <Text style={styles.streak_text}>Your Streak</Text>
+
       <View style={styles.content} pointerEvents="none"></View>
+      {/* <Button title="read streak" color="#f194ff" onPress={() => readData()}>
+        read streak
+      </Button> */}
+
       <Navbar />
+
       <View style={styles.overlay} pointerEvents="none"></View>
     </View>
   );
@@ -118,24 +135,59 @@ const styles = StyleSheet.create({
     left: 0,
     right: 0,
     top: 0,
-    height: 175,
-  },
-  sun: {
-    position: 'absolute',
-    left: -120,
-    top: -120,
-  },
-  hill: {
-    position: 'absolute',
-    bottom: -500,
-    left: -100,
+    height: Dimensions.get('window').width * 0.35,
   },
   streak_text: {
     position: 'absolute',
-    color: '#DDE5B6',
+    color: settings.colors.off_white,
+    fontFamily: 'Avenir-Roman',
     fontSize: 35,
     fontWeight: 'bold',
-    bottom: 125,
-    left: 70,
+    marginTop: Dimensions.get('window').height * 0.73,
+    left: Dimensions.get('window').width * 0.45,
+  },
+  sun: {
+    position: 'absolute',
+    left: Dimensions.get('window').width * -0.35,
+    top: Dimensions.get('window').height * -0.15,
+  },
+  hill: {
+    position: 'absolute',
+    bottom: Dimensions.get('window').height * -0.75,
+    left: Dimensions.get('window').width * -0.29,
+  },
+  fire: {
+    position: 'absolute',
+    top: Dimensions.get('window').height * 0.2,
+    left: Dimensions.get('window').width * 0.256,
+    flexDirection: 'row',
+  },
+  tree: {
+    position: 'absolute',
+    marginTop: Dimensions.get('window').height * 0.45,
+    left: Dimensions.get('window').width * 0.6,
+  },
+  counter: {
+    fontSize: 80,
+    marginLeft: 20,
+    marginTop: 10,
+    fontWeight: 'bold',
+  },
+  msg: {
+    fontFamily: 'Avenir-Roman',
+    position: 'absolute',
+    width: Dimensions.get('window').width / 1.8,
+    textAlign: 'center',
+    color: settings.colors.dark_secondary,
+    fontSize: 15,
+    fontWeight: 'bold',
+    marginTop: 120,
+    shadowColor: settings.colors.black,
+    shadowOpacity: 0.5,
+    shadowRadius: 5,
+    shadowOffset: {
+      width: 0,
+      height: 1,
+    },
   },
 });

@@ -7,7 +7,9 @@
     "secondary": "#A98467",
     "dark_secondary": "#6C584C",
     "black": "#000",
-    "blue":"#78B4C1"
+    "blue":"#78B4C1",
+    "yellow":"#FCE595",
+    "red":"#C17C78"
   },
   "navbar_height": 97
 }
