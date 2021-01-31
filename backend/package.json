@@ -11,6 +11,7 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "geolib": "^3.3.1",
+    "google-polyline": "^1.0.3",
     "random": "^2.2.0"
   }
 }

@@ -11,5 +11,9 @@
     "yellow":"#FCE595",
     "red":"#C17C78"
   },
-  "navbar_height": 97
+  "navbar_height": 97,
+  "keys": {
+    "target_location":"TARGET_LOCATION"
+  },
+  "target_capture_radius": 10
 }

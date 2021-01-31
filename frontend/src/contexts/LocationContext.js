@@ -42,7 +42,6 @@ export const LocationProvider = ({ children }) => {
     })();
 
     return async () => {
-      console.log(watchLocationRef.current);
       if (watchLocationRef.current != null) watchLocationRef.current.remove();
       //await watchLocationRef.current;
       //await Location.stopLocationUpdatesAsync(location_task);
