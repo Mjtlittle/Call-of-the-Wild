@@ -48,7 +48,7 @@ const Map = ({ onPan, mapRef, position, targetData }) => {
         {targetData && (
           <>
             <IconMarker coord={targetData.location} icon="flag-checkered" />
-            <Circle center={position} radius={targetData.radius} />
+            {/* <Circle center={position} radius={targetData.radius} /> */}
             <Polyline
               coordinates={targetData.steps}
               strokeWidth={6}
