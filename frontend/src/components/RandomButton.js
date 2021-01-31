@@ -1,18 +1,14 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, Button, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, Button, Pressable } from "react-native";
 import settings from "../settings.json";
-
-const RandomButton = () => {
-  const [a, setA] = useState(0);
-
+import { FontAwesome5 } from "@expo/vector-icons";
+const RandomButton = ({ onPress }) => {
   return (
-    <TouchableOpacity
-      onPress={() => {
-        setA(a + 1);
-      }}
-    >
-      <View style={styles.root}></View>
-    </TouchableOpacity>
+    <Pressable onPress={onPress}>
+      <View style={styles.root}>
+        <FontAwesome5 name="dice" size={30} color={settings.colors.off_white} />
+      </View>
+    </Pressable>
   );
 };
 
@@ -20,21 +16,28 @@ export default RandomButton;
 
 const styles = StyleSheet.create({
   root: {
-    position: "absolute",
-
+    // appearence
+    backgroundColor: settings.colors.dark_secondary,
     width: 67,
     height: 67,
 
-    bottom: settings.navbar_height + 20,
+    // position
+    position: "absolute",
+    bottom: 30,
     right: 20,
 
+    // shadow
     borderRadius: 75,
-    shadowRadius: 2,
-    shadowColor: "#000",
-
+    shadowRadius: 3,
+    shadowColor: settings.colors.black,
     shadowOffset: {
-      x: 30,
+      height: 3,
     },
-    backgroundColor: settings.colors.dark_secondary,
+    shadowOpacity: 0.5,
+
+    // flex
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
   },
 });
