@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="Tracecamp" src="./logo.svg" width="60" />
+    <img alt="logo" src="./assets/logo.svg" width="60" />
 </p>
 <h1 align="center">
   Call of the Wild
