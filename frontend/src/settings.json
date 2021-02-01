@@ -1,4 +1,5 @@
 {
+  "backend_address": "http://130.127.78.14:8080/",
   "colors": {
     "white": "#fff",
     "off_white": "#F0EAD2",

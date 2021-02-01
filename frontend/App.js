@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,16 +6,16 @@ import {
   Dimensions,
   StatusBar,
   Pressable,
-} from 'react-native';
-import 'react-native-gesture-handler';
-import { NavigationContainer } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
+} from "react-native";
+import "react-native-gesture-handler";
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
 
-import MapScreen from './src/screens/MapScreen';
-import StreakScreen from './src/screens/StreakScreen';
-import SplashScreen from './src/screens/SplashScreen';
+import MapScreen from "./src/screens/MapScreen";
+import StreakScreen from "./src/screens/StreakScreen";
+import SplashScreen from "./src/screens/SplashScreen";
 
-import { LocationProvider } from './src/contexts/LocationContext';
+import { LocationProvider } from "./src/contexts/LocationContext";
 
 const Stack = createStackNavigator();
 
@@ -30,6 +30,7 @@ export default function App() {
   return showWelcome ? (
     <Pressable
       onPress={function () {
+        console.log(1);
         setShowWelcome(false);
       }}
     >
@@ -39,7 +40,7 @@ export default function App() {
     </Pressable>
   ) : (
     <LocationProvider>
-      <View style={{ flexDirection: 'column', flex: 1 }}>
+      <View style={{ flexDirection: "column", flex: 1 }}>
         <StatusBar barStyle="dark-content" />
         <NavigationContainer>
           <Stack.Navigator

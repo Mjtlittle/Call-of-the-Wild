@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import {
   StyleSheet,
   Text,
@@ -6,21 +6,21 @@ import {
   Dimensions,
   Button,
   Pressable,
-} from 'react-native';
-import Map from '../components/Map';
-import Navbar from '../components/Navbar';
-import settings from '../settings.json';
-import { LinearGradient } from 'expo-linear-gradient';
-import Sun from '../components/Sun';
-import Hill from '../components/Hill';
-import Trees from '../components/Trees';
-import Fire from '../components/Fire';
-import AsyncStorage from '@react-native-async-storage/async-storage';
-import { format, compareAsc } from 'date-fns';
-import { endOfToday } from 'date-fns/esm';
+} from "react-native";
+import Map from "../components/Map";
+import Navbar from "../components/Navbar";
+import settings from "../settings.json";
+import { LinearGradient } from "expo-linear-gradient";
+import Sun from "../components/Sun";
+import Hill from "../components/Hill";
+import Trees from "../components/Trees";
+import Fire from "../components/Fire";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { format, compareAsc } from "date-fns";
+import { endOfToday } from "date-fns/esm";
 
 // from https://blog.jscrambler.com/how-to-use-react-native-asyncstorage/
-const STORAGE_KEY = '@save_streak';
+const STORAGE_KEY = "@save_streak";
 
 // track streak
 // -- get today's date
@@ -30,7 +30,7 @@ const STORAGE_KEY = '@save_streak';
 const StreakScreen = () => {
   const [streak, setStreak] = useState(0);
   const [msg, setMsg] = useState(
-    "You don't have a streak yet. Get started today!",
+    "You don't have a streak yet. Get started today!"
   );
 
   const saveData = async () => {
@@ -38,7 +38,7 @@ const StreakScreen = () => {
       setStreak(streak + 1);
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(streak + 1));
     } catch (e) {
-      console.log('Failed to save the data to the storage');
+      console.log("Failed to save the data to the storage");
     }
   };
   const readData = async () => {
@@ -48,7 +48,7 @@ const StreakScreen = () => {
         setStreak(JSON.parse(userStreak));
       }
     } catch (e) {
-      console.log('Failed to fetch the data from storage');
+      console.log("Failed to fetch the data from storage");
     }
   };
 
@@ -107,80 +107,80 @@ export default StreakScreen;
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    flexDirection: 'column',
+    flexDirection: "column",
     backgroundColor: settings.colors.off_white,
   },
   overlay: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    position: 'absolute',
+    alignItems: "center",
+    justifyContent: "center",
+    position: "absolute",
     left: 0,
     top: 0,
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   map: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     top: 0,
-    width: Dimensions.get('window').width,
-    height: Dimensions.get('window').height,
+    width: Dimensions.get("window").width,
+    height: Dimensions.get("window").height,
   },
   content: {
     flexGrow: 1,
   },
   linearGradient: {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     right: 0,
     top: 0,
-    height: Dimensions.get('window').width * 0.35,
+    height: Dimensions.get("window").width * 0.35,
   },
   streak_text: {
-    position: 'absolute',
+    position: "absolute",
     color: settings.colors.off_white,
-    fontFamily: 'Avenir-Roman',
+    fontFamily: "Avenir-Roman",
     fontSize: 35,
-    fontWeight: 'bold',
-    marginTop: Dimensions.get('window').height * 0.73,
-    left: Dimensions.get('window').width * 0.45,
+    fontWeight: "bold",
+    marginTop: Dimensions.get("window").height * 0.73,
+    left: Dimensions.get("window").width * 0.45,
   },
   sun: {
-    position: 'absolute',
-    left: Dimensions.get('window').width * -0.35,
-    top: Dimensions.get('window').height * -0.15,
+    position: "absolute",
+    left: Dimensions.get("window").width * -0.3,
+    top: Dimensions.get("window").height * -0.1,
   },
   hill: {
-    position: 'absolute',
-    bottom: Dimensions.get('window').height * -0.75,
-    left: Dimensions.get('window').width * -0.29,
+    position: "absolute",
+    bottom: Dimensions.get("window").height * -0.5,
+    left: Dimensions.get("window").width * -0.29,
   },
   fire: {
-    position: 'absolute',
-    top: Dimensions.get('window').height * 0.2,
-    left: Dimensions.get('window').width * 0.256,
-    flexDirection: 'row',
+    position: "absolute",
+    top: Dimensions.get("window").height * 0.2,
+    left: Dimensions.get("window").width * 0.256,
+    flexDirection: "row",
   },
   tree: {
-    position: 'absolute',
-    marginTop: Dimensions.get('window').height * 0.45,
-    left: Dimensions.get('window').width * 0.6,
+    position: "absolute",
+    marginTop: Dimensions.get("window").height * 0.45,
+    left: Dimensions.get("window").width * 0.6,
   },
   counter: {
     fontSize: 80,
     marginLeft: 20,
     marginTop: 10,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   msg: {
-    fontFamily: 'Avenir-Roman',
-    position: 'absolute',
-    width: Dimensions.get('window').width / 1.8,
-    textAlign: 'center',
+    fontFamily: "Avenir-Roman",
+    position: "absolute",
+    width: Dimensions.get("window").width / 1.8,
+    textAlign: "center",
     color: settings.colors.dark_secondary,
     fontSize: 15,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 120,
     shadowColor: settings.colors.black,
     shadowOpacity: 0.5,
