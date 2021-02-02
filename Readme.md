@@ -46,6 +46,7 @@ _Random Locations. Walking. Daily Streaks. Healthy. Fun._
 <img src="./assets/streak_0.png" height=400 alt="streak screen with 0"/>
 <img src="./assets/streak_6.png" height=400 alt="streak screen with 6"/>
 </p>
+
 ---
 
 ## Development
