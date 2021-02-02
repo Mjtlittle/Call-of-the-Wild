@@ -5,12 +5,12 @@
   Call of the Wild
 </h1>
 
-## About
-
 This is the project we made for the 24 hour hackathon, [CUHackit 2021](https://cuhackit2021.devpost.com/). Created and designed by: [Giang Vu](https://github.com/GVU-GAME), [Stephen Russell](https://github.com/StphnRssll), and [Joshua Little](https://github.com/Mjtlittle). It received the award for Best UI/UX.
 
 - [Devpost Link](https://devpost.com/software/call-of-nature)
 - [Hackathon Link](https://cuhackit2021.devpost.com/)
+
+## About
 
 ### Inspiration
 Over this past year, we have spent countless hours a day indoors without any outdoor activity. Recent [studies](https://www.tandfonline.com/doi/full/10.1080/00952990.2020.1832508) have shown that prolonged time indoors is connected to depression and binge drinking in young adults. It is at these times that an outside factor pushing us to move around is necessary. That's why we made this app to gamify the act and jumpstart outdoor interests.
@@ -35,8 +35,6 @@ Some ideas beforehand were not implemented, like a monetary component or a data 
 
 _Random Locations. Walking. Daily Streaks. Healthy. Fun._
 
----
-
 ## Screenshots
 
 <p align="center">
@@ -46,8 +44,6 @@ _Random Locations. Walking. Daily Streaks. Healthy. Fun._
 <img src="./assets/streak_0.png" height=400 alt="streak screen with 0"/>
 <img src="./assets/streak_6.png" height=400 alt="streak screen with 6"/>
 </p>
-
----
 
 ## Development
 
