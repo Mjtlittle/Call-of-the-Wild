@@ -39,12 +39,13 @@ _Random Locations. Walking. Daily Streaks. Healthy. Fun._
 
 ## Screenshots
 
-<img src="./assets/splash.png" height=300 alt="splash screen"/>
-<img src="./assets/map_centered.png" height=300 alt="centered map screen"/>
-<img src="./assets/map_uncentered.png" height=300 alt="uncentered map screen"/>
-<img src="./assets/streak_0.png" height=300 alt="streak screen with 0"/>
-<img src="./assets/streak_6.png" height=300 alt="streak screen with 6"/>
-
+<p align="center">
+<img src="./assets/splash.png" height=400 alt="splash screen"/>
+<img src="./assets/map_centered.png" height=400 alt="centered map screen"/>
+<img src="./assets/map_uncentered.png" height=400 alt="uncentered map screen"/>
+<img src="./assets/streak_0.png" height=400 alt="streak screen with 0"/>
+<img src="./assets/streak_6.png" height=400 alt="streak screen with 6"/>
+</p>
 ---
 
 ## Development
